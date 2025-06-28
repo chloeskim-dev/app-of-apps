@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/chloeskim-dev/app-of-apps
     targetRevision: main
-    path: app1
+    path: apps/app1
   destination:
     server: https://kubernetes.default.svc
     namespace: app1
