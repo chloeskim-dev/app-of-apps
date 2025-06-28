@@ -38,6 +38,5 @@ spec:
         targetRevision: HEAD
         path: vault-cd
       destination:
-        name: '{{.name}}'
         server: '{{.server}}' # 'server' field of the secret
         namespace: vault
