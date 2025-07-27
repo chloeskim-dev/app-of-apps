@@ -36,7 +36,7 @@ spec:
       source:
         repoURL: https://github.com/chloeskim-dev/deployment
         targetRevision: HEAD
-        path: argocd
+        path: argocd-cd
       destination:
         server: '{{.server}}' # 'server' field of the secret
         namespace: argocd
