@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: argocd
+  destinations:
+  - name: in-cluster
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  sourceRepos:
+  - https://github.com/chloeskim-dev/deployment
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - clusters: {} # Automatically use all clusters defined within Argo CD
+  template:
+    metadata:
+      name: '{{.name}}-argocd' # 'name' field of the Secret
+    spec:
+      project: "argocd"
+      source:
+        repoURL: https://github.com/chloeskim-dev/deployment
+        targetRevision: HEAD
+        path: argocd
+      destination:
+        server: '{{.server}}' # 'server' field of the secret
+        namespace: argocd
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true

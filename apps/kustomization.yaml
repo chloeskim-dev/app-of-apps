@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - actions-runner-controller.yaml
+- argocd.yaml
 - external-secrets.yaml
 - sequence-builder.yaml
 - vault.yaml
