@@ -41,5 +41,8 @@ spec:
         server: '{{.server}}' # 'server' field of the secret
         namespace: sequence-builder
       syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
         syncOptions:
         - CreateNamespace=true
