@@ -40,7 +40,7 @@ spec:
       destination:
         server: '{{.server}}' # 'server' field of the secret
         namespace: vault
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
+      #syncPolicy:
+      #  automated:
+      #    prune: true
+      #    selfHeal: true
