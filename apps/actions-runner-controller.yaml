@@ -41,9 +41,9 @@ spec:
         server: '{{.server}}' # 'server' field of the secret
         namespace: actions-runner-controller
       syncPolicy:
-        #automated:
-        #  prune: true
-        #  selfHeal: true
+        automated:
+          prune: true
+          selfHeal: true
         syncOptions:
         - CreateNamespace=true
         - ServerSideApply=true
